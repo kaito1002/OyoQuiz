@@ -34,6 +34,6 @@ jobs:
         sudo systemctl stop webhook.service
     - name: deploy
       run: |
-        URL="http://ec2-18-189-1-160.us-east-2.compute.amazonaws.com"
+        URL="http://ec2-18-189-1-160.us-east-2.compute.amazonaws.com/webhook"
         KEY='"'${{ secrets.WEBHOOK_KEY }}'"'
         curl -X POST ${URL} -d '{"key":"'"${KEY}"'"}'
