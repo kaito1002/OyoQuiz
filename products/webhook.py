@@ -4,7 +4,7 @@ import subprocess
 import json
 import threading
 
-KEY = 'Input Key In Product'
+KEY = ''
 
 
 def deploy():
@@ -21,19 +21,26 @@ def webhook(environ, start_response):
         ('Content-type', 'application/json; charset=utf-8'),
         ('Access-Control-Allow-Origin', '*'),
     ]
+    message = ""
+    is_fail = False
+    try:
+        content_length = environ.get('CONTENT_LENGTH', 0)
+        body = environ.get('wsgi.input').read(int(content_length)).decode()
+        data = json.loads(body)
+    except Exception as e:
+        is_fail = True
+        message = str(e)
+        data = {'key': ''}
+        print(e)
 
-    content_length = environ.get('CONTENT_LENGTH', 0)
-    body = environ.get('wsgi.input').read(int(content_length)).decode()
-    data = json.loads(body)
-
-    if data['key'] == KEY:
+    if not is_fail and data['key'] == KEY:
         # auth
         message = "OK"
         print("Authorized.")
         deploy_thread = threading.Thread(target=deploy)
         deploy_thread.start()
     else:
-        message = "Fail"
+        message = f"Fail\n{message}"
         print("Failed.")
     start_response(f"{status} {message}", headers)
     return [json.dumps(
