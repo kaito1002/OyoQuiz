@@ -32,8 +32,8 @@ jobs:
         cd docker
         docker-compose down
         sudo systemctl stop webhook.service
-    # - name: deploy
-    #   run: |
-    #     URL=""
-    #     KEY='"'${{ secrets.KEY }}'"'
-    #     curl -X POST ${URL} -d '{"key":"'"${KEY}"'"}'
+    - name: deploy
+      run: |
+        URL="http://ec2-18-189-1-160.us-east-2.compute.amazonaws.com"
+        KEY='"'${{ secrets.WEBHOOK_KEY }}'"'
+        curl -X POST ${URL} -d '{"key":"'"${KEY}"'"}'
