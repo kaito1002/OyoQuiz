@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  uwsgi:
+    build: ./app
+    container_name: uwsgi
+    restart: always
+    expose:
+      - 8080
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+#    extra_hosts:
+#     - "host.docker.internal:127.0.0.1"
