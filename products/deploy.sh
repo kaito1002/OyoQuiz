@@ -1,7 +1,13 @@
 PROJECT="OyoQuiz"
 OS=$(uname)
 
-cd /home/ubuntu/${PROJECT}/docker
+cd /home/ubuntu/${PROJECT}
+
+chmod a+x products/webhook.py && chmod a+x products/deploy.sh
+\cp -f products/webhook.py ../
+\cp -f products/deploy.sh ../
+
+cd docker
 sudo docker-compose down
 
 if [ ${OS} = "Linux" ]; then
