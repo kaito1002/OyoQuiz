@@ -1,6 +1,7 @@
 # add
 wakashiko.pem
 .DS_Store
+secrets.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
