@@ -2,16 +2,20 @@ version: "3.7"
 
 services:
   uwsgi:
-    build: ./app
+    build: ./django_project
     container_name: uwsgi
     restart: always
     expose:
       - 8080
+    volumes:
+      - ./django_project:/project
   nginx:
     build: ./nginx
     container_name: nginx
     restart: always
     ports:
       - "80:80"
+    volumes:
+      - ./django_project/templates/static:/static
 #    extra_hosts:
 #     - "host.docker.internal:127.0.0.1"
