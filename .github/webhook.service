@@ -1,0 +1,10 @@
+[Unit]
+Description = Webhook Server
+
+[Service]
+ExecStart = /usr/bin/python /home/runner/work/OyoQuiz/OyoQuiz/webhook.py
+Restart = always
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
