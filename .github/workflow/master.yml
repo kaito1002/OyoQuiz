@@ -1,0 +1,38 @@
+name: OyoQuizMaster
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up webhook
+      run: |
+        sudo cp ./.github/webhook.service /etc/systemd/system/
+        sudo chmod 0755 ./.github/webhook.py
+        sudo systemctl enable webhook.service
+        sudo systemctl start webhook.service
+    - name: Set up Containers
+      run: |
+        cd docker
+        sed -i -e "s/#//g" docker-compose.yml
+        docker-compose build
+        docker-compose up -d
+    - name: Run Connection Test
+      run: |
+        curl -f -I http://127.0.0.1:80
+    - name: Kill Containers
+      run: |
+        docker-compose down
+        sudo systemctl stop webhook.service
+    # - name: deploy
+    #   run: |
+    #     URL="ec2-18-219-184-183.us-east-2.compute.amazonaws.com/webhook"
+    #     KEY='"'${{ secrets.KEY }}'"'
+    #     curl -X POST ${URL} -d '{"key":"'"${KEY}"'"}'
