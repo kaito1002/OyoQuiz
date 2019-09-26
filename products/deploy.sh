@@ -3,8 +3,7 @@ OS=$(uname)
 
 cd /home/ubuntu/${PROJECT}
 
-chmod a+x products/webhook.py && chmod a+x products/deploy.sh
-\cp -f products/webhook.py ../
+chmod a+x products/deploy.sh
 \cp -f products/deploy.sh ../
 
 cd docker
