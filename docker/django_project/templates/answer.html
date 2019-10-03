@@ -9,13 +9,13 @@
 
   <p style="font-size: 30px;">{{ answer }}</p>
 
-  <div class="answer">
+  <div class="answer">
     <p>解説</p>
     <li>{{ description }}</li>
   </div>
 
   <div class="next-question">
-    <a href="{% url 'exercise' %}">次の問題へ</a>
+    <a href="{% url 'exercise' year next %}">次の問題へ</a>
     <!-- <p align="center">次の問題へ</p> -->
   </div>
 
