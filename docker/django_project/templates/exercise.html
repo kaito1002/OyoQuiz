@@ -10,17 +10,17 @@
 
     <p class="p1">"選択した出題内容を表示"</p>
 
-    <p style="font-size: 30px;">第{{ex_number}}問</p>
+    <p style="font-size: 30px;">第{{ ex_number }}問</p>
 
     <div class="question-sentence">
-      <li style="">"問題文"</li>
+      <li style="">{{ paragraph }}</li>
     </div>
 
-    <div class="choice2">
-      <p>ア.  "select_1"</p>
-      <p>イ.  "select_2"</p>
-      <p>ウ.  "select_3"</p>
-      <p>エ.  "select_4"</p>
+    <div class="choice2">
+      <p>ア.  {{ select_1 }}</p>
+      <p>イ.  {{ select_2 }}</p>
+      <p>ウ.  {{ select_3 }}</p>
+      <p>エ.  {{ select_4 }}</p>
     </div>
 
     <div class="options">
@@ -29,7 +29,4 @@
       <a class="option" href="#">ウ</a>
       <a class="option" href="#">エ</a>
     </div>
-
-
-  <p>{{ sample_key }}</p>
 {% endblock %}
