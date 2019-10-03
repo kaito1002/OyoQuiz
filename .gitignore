@@ -3,6 +3,7 @@ wakashiko.pem
 .DS_Store
 secrets.md
 *.log
+migrations
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
