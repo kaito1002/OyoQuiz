@@ -7,12 +7,30 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+
 def exercise(request):
     context = {
-        "select_1": 1,
-        "select_2": 2,
-        "select_3": 3,
-        "select_4": 4,
-        "ex_number": 5
+        "select_1": "hoge",
+        "select_2": "foo",
+        "select_3": "fuga",
+        "select_4": "huge",
+        "ex_number": 5,
+        "paragraph": "ほげほげとはなにか?"
     }
     return render(request, 'exercise.html', context)
+
+
+def answer(request):
+    context = {
+        "answer": "ア",
+        "description": "ほげとはhogeのことである.",
+    }
+    return render(request, 'answer.html', context)
+
+
+def judge(request):
+    context = {
+        "percentage": 80,
+        "comment": "大変良くできました."
+    }
+    return render(request, 'judge.html', context)
