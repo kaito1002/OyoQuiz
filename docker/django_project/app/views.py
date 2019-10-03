@@ -8,8 +8,10 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def exercise(request):
+def exercise(request, year: int, page_id: int):
     context = {
+        "id": page_id,
+        "year": year,
         "select_1": "hoge",
         "select_2": "foo",
         "select_3": "fuga",
@@ -20,8 +22,10 @@ def exercise(request):
     return render(request, 'exercise.html', context)
 
 
-def answer(request):
+def answer(request, year: int, page_id: int):
     context = {
+        "next": page_id + 1,
+        "year": year,
         "answer": "ア",
         "description": "ほげとはhogeのことである.",
     }
