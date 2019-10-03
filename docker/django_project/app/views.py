@@ -17,7 +17,13 @@ def exercise(request, year: int, page_id: int):
         "select_3": "fuga",
         "select_4": "huge",
         "ex_number": 5,
-        "paragraph": "ほげほげとはなにか?"
+        "paragraph": "ほげほげとはなにか?",
+        "selections": [
+            {"key": "ア", "value": "hoge"},
+            {"key": "イ",  "value": "foo"},
+            {"key": "ウ", "value": "fuga"},
+            {"key": "エ",  "value": "huge"},
+        ]
     }
     return render(request, 'exercise.html', context)
 

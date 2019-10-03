@@ -17,16 +17,14 @@
     </div>
 
     <div class="choice2">
-      <p>ア.  {{ select_1 }}</p>
-      <p>イ.  {{ select_2 }}</p>
-      <p>ウ.  {{ select_3 }}</p>
-      <p>エ.  {{ select_4 }}</p>
+    {% for select in selections %}
+      <p>{{ select.key }}.  {{ select.value }}</p>
+    {% endfor %}
     </div>
 
     <div class="options">
-      <a class="option" href="{% url 'answer' year id %}">ア</a>
-      <a class="option" href="{% url 'answer' year id %}">イ</a>
-      <a class="option" href="{% url 'answer' year id %}">ウ</a>
-      <a class="option" href="{% url 'answer' year id %}">エ</a>
+    {% for select in selections %}
+      <a class="option" href="{% url 'answer' year id %}">{{ select.key }}</a>
+    {% endfor %}
     </div>
 {% endblock %}
