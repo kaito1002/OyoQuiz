@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block external_header %}<link rel="stylesheet" href="/static/css/answer.css">{% endblock %}
+{% block title %}解説{% endblock %}
+{% block content %}
+
+  <h1 class="title">応用情報技術者試験過去問道場</h1>
+
+  <p class="p1">正解は…</p>
+
+  <p style="font-size: 30px;">{{ answer }}</p>
+
+  <div class="answer">
+    <p>解説</p>
+    <li>{{ description }}</li>
+  </div>
+
+  <div class="next-question">
+    <a href="{% url 'exercise' year next %}">次の問題へ</a>
+    <!-- <p align="center">次の問題へ</p> -->
+  </div>
+
+  <div class="judge">
+    <a href="{% url 'judge' %}">判定</a>
+    <!-- <p align="center">判定</p> -->
+  </div>
+
+{% endblock %}
