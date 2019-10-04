@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Exam, Question
 
 
 def index(request):
@@ -8,32 +9,36 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def exercise(request, year: int, page_id: int):
+def exercise(request, year: int, type: str, page_id: int):
+    exam = Exam.objects.get(year=year, type=type)
+    question = Question.objects.get(exam=exam, question_id=page_id)
+
     context = {
         "id": page_id,
         "year": year,
-        "select_1": "hoge",
-        "select_2": "foo",
-        "select_3": "fuga",
-        "select_4": "huge",
-        "ex_number": 5,
-        "paragraph": "ほげほげとはなにか?",
+        "type": type,
+        "ex_number": page_id,
+        "paragraph": question.statement,
         "selections": [
-            {"key": "ア", "value": "hoge"},
-            {"key": "イ", "value": "foo"},
-            {"key": "ウ", "value": "fuga"},
-            {"key": "エ", "value": "huge"},
+            {"key": "ア", "value": question.select1},
+            {"key": "イ", "value": question.select2},
+            {"key": "ウ", "value": question.select3},
+            {"key": "エ", "value": question.select4},
         ]
     }
     return render(request, 'exercise.html', context)
 
 
-def answer(request, year: int, page_id: int):
+def answer(request, year: int, type: str, page_id: int):
+    exam = Exam.objects.get(year=year, type=type)
+    question = Question.objects.get(exam=exam, question_id=page_id)
+
     context = {
         "next": page_id + 1,
         "year": year,
-        "answer": "ア",
-        "description": "ほげとはhogeのことである.",
+        "type": type,
+        "answer": question.answer_str,
+        "description": question.description,
     }
     return render(request, 'answer.html', context)
 
@@ -44,6 +49,7 @@ def judge(request):
         "comment": "大変良くできました."
     }
     return render(request, 'judge.html', context)
+
 
 def top(request):
     context = {
