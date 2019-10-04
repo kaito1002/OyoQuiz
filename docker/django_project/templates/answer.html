@@ -23,5 +23,11 @@
     <a href="{% url 'judge' year type %}">判定</a>
     <!-- <p align="center">判定</p> -->
   </div>
+{#  正答の成否を送信 見た目には手をつけない  #}
+    {% if is_correct %}
+    <p>正解</p>
+    {% else %}
+    <p>ハズレ</p>
+    {% endif %}
 
 {% endblock %}

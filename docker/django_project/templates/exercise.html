@@ -24,7 +24,7 @@
 
     <div class="options">
     {% for select in selections %}
-      <a class="option" href="{% url 'answer' year type id %}">{{ select.key }}</a>
+      <a class="option" href="{% url 'answer' year type id %}?answer={{ select.key }}">{{ select.key }}</a>
     {% endfor %}
     </div>
 {% endblock %}

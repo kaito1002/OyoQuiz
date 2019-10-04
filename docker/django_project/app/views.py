@@ -44,8 +44,9 @@ def answer(request, year: int, e_type: int, page_id: int):
     if str(e_type) not in result[str(year)].keys():
         result[str(year)][str(e_type)] = {}
 
-    user_answer = 1  # なんらかの手段で受け取る
-    result[str(year)][str(e_type)][str(page_id)] = True if user_answer == question.answer else False
+    user_answer = request.GET["answer"]  # ア ... エ
+    is_correct = True if user_answer == question.answer_str else False
+    result[str(year)][str(e_type)][str(page_id)] = is_correct
     request.session["result"] = result
 
     context = {
@@ -53,6 +54,7 @@ def answer(request, year: int, e_type: int, page_id: int):
         "year": year,
         "type": e_type,
         "answer": question.answer_str,
+        "is_correct": is_correct,
         "description": question.description,
     }
     return render(request, 'answer.html', context)
