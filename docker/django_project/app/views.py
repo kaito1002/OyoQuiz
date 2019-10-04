@@ -44,3 +44,11 @@ def judge(request):
         "comment": "大変良くできました."
     }
     return render(request, 'judge.html', context)
+
+def top(request):
+    context = {
+        "morning": "午前",
+        "afternoon": "午後"
+    }
+
+    return render(request, 'top.html', context)
