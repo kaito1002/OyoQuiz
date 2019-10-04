@@ -4,20 +4,27 @@
   <h1 class="title">応用情報技術者試験過去問道場</h1>
 
   <p class="p1">出題内容</p>
+    {% for exam in exams %}
+        <li class="year">
+            <a href="{% url 'exercise' exam.year exam.type 1 %}">
+                平成{{ exam.year }}年度 {{ exam.type_str }}問題
+            </a>
+        </li>
+    {% endfor %}
 
-  <ul class="choice">
-    <li class="year">平成31年度(春期)</li>
-    <a href="#">{{morning}}</a>
-    <a href="#">{{afternoon}}</a>
-    <li class="year">平成30年度(秋期)</li>
-    <a href="#">{{morning}}</a>
-    <a href="#">{{afternoon}}</a>
-    <li class="year">平成30年度(春期)</li>
-    <a href="#">{{morning}}</a>
-    <a href="#">{{afternoon}}</a>
-    <li class="year">平成29年度(秋期)</li>
-    <a href="#">{{morning}}</a>
-    <a href="#">{{afternoon}}</a>
-  </ul>
+{#  <ul class="choice">#}
+{#    <li class="year">平成31年度(春期)</li>#}
+{#    <a href="#">{{morning}}</a>#}
+{#    <a href="#">{{afternoon}}</a>#}
+{#    <li class="year">平成30年度(秋期)</li>#}
+{#    <a href="#">{{morning}}</a>#}
+{#    <a href="#">{{afternoon}}</a>#}
+{#    <li class="year">平成30年度(春期)</li>#}
+{#    <a href="#">{{morning}}</a>#}
+{#    <a href="#">{{afternoon}}</a>#}
+{#    <li class="year">平成29年度(秋期)</li>#}
+{#    <a href="#">{{morning}}</a>#}
+{#    <a href="#">{{afternoon}}</a>#}
+{#  </ul>#}
 
 {% endblock %}
