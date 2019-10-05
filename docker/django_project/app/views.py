@@ -46,7 +46,7 @@ def answer(request, year: int, e_type: int, page_id: int):
 
     user_answer = request.GET["answer"]  # ア ... エ
     is_correct = user_answer == question.answer_str
-    is_end = page_id >= exam.question_number
+    is_end = not page_id >= exam.question_number
     result[str(year)][str(e_type)][str(page_id)] = is_correct
     request.session["result"] = result
 
