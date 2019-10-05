@@ -75,9 +75,13 @@ def judge(request, year: int, e_type: int):
 
 
 def top(request):
+    exams = [{
+        "year": x.year,
+        "type": x.type,
+        "type_str": "午前" if x.type == 0 else "午後"
+    } for x in Exam.objects.all()]
     context = {
-        "morning": "午前",
-        "afternoon": "午後"
+        "exams": exams,
     }
 
     return render(request, 'top.html', context)

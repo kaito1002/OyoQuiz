@@ -13,9 +13,9 @@ class Exam(models.Model):
 
 
 class Question(models.Model):
-    statement = models.TextField()       # 問題文
+    statement = models.TextField()                # 問題文
     description = models.TextField(null=True)     # 解説
-    answer = models.IntegerField()       # 正答 1 to 4
+    answer = models.IntegerField()                # 正答 1 to 4
     select1 = models.CharField(max_length=128)         # 選択肢1
     select2 = models.CharField(max_length=128)         # 選択肢2
     select3 = models.CharField(max_length=128)         # 選択肢3
