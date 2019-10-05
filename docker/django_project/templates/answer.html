@@ -5,9 +5,17 @@
 
   <h1 class="title">応用情報技術者試験過去問道場</h1>
 
-  <p class="p1">正解は…</p>
 
+
+  {% if is_correct %}
+  <p>正解</p>
+  {% else %}
+  <p>ハズレ</p>
+  <p class="p1">正解は…</p>
   <p style="font-size: 30px;">{{ answer }}</p>
+  {% endif %}
+
+
 
   <div class="answer">
     <p>解説</p>
@@ -15,7 +23,11 @@
   </div>
 
   <div class="next-question">
+    {% if is_end %}
     <a href="{% url 'exercise' year type next %}">次の問題へ</a>
+    {% endif %}
+
+
     <!-- <p align="center">次の問題へ</p> -->
   </div>
 
@@ -24,10 +36,6 @@
     <!-- <p align="center">判定</p> -->
   </div>
 {#  正答の成否を送信 見た目には手をつけない  #}
-    {% if is_correct %}
-    <p>正解</p>
-    {% else %}
-    <p>ハズレ</p>
-    {% endif %}
+
 
 {% endblock %}
