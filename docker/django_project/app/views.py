@@ -45,7 +45,8 @@ def answer(request, year: int, e_type: int, page_id: int):
         result[str(year)][str(e_type)] = {}
 
     user_answer = request.GET["answer"]  # ア ... エ
-    is_correct = True if user_answer == question.answer_str else False
+    is_correct = user_answer == question.answer_str
+    is_end = page_id >= exam.question_number
     result[str(year)][str(e_type)][str(page_id)] = is_correct
     request.session["result"] = result
 
@@ -55,6 +56,7 @@ def answer(request, year: int, e_type: int, page_id: int):
         "type": e_type,
         "answer": question.answer_str,
         "is_correct": is_correct,
+        "is_end": is_end,
         "description": question.description,
     }
     return render(request, 'answer.html', context)
