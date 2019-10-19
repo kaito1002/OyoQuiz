@@ -8,9 +8,9 @@
 
 
   {% if is_correct %}
-  <p>正解</p>
+  <p style="font-size: 40px;">正解</p>
   {% else %}
-  <p>ハズレ</p>
+  <p style="font-size: 40px;">ハズレ</p>
   <p class="p1">正解は…</p>
   <p style="font-size: 30px;">{{ answer }}</p>
   {% endif %}
@@ -35,7 +35,6 @@
     <a href="{% url 'judge' year type %}">判定</a>
     <!-- <p align="center">判定</p> -->
   </div>
-{#  正答の成否を送信 見た目には手をつけない  #}
 
 
 {% endblock %}

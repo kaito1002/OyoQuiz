@@ -20,9 +20,7 @@ class Question(models.Model):
     select2 = models.CharField(max_length=128)         # 選択肢2
     select3 = models.CharField(max_length=128)         # 選択肢3
     select4 = models.CharField(max_length=128)         # 選択肢4
-    question_id = models.IntegerField(
-        unique=True,
-    )  # 問題番号
+    question_id = models.IntegerField()  # 問題番号
     exam = models.ForeignKey(
         Exam,
         on_delete=models.CASCADE,
@@ -41,6 +39,6 @@ class Question(models.Model):
             return "エ"
 
     def __repr__(self):
-        return "{}: {} => {}".format(self.pk, self.question_id, self.answer_str)
+        return "{}: {} => {}".format(self.exam, self.question_id, self.answer_str)
 
     __str__ = __repr__

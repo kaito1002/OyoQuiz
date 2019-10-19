@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block external_header %}<link rel="stylesheet" href="/static/css/top.css">{% endblock %}
 {% block content %}
+<div class="all">
   <h1 class="title">応用情報技術者試験過去問道場</h1>
 
-  <p class="p1">出題内容</p>
+  <p class="p1" style="font-size:30px;">出題内容</p>
     {% for exam in exams %}
         <li class="year">
             <a href="{% url 'exercise' exam.year exam.type 1 %}">
@@ -27,4 +28,5 @@
 {#    <a href="#">{{afternoon}}</a>#}
 {#  </ul>#}
 
+</div>
 {% endblock %}
