@@ -64,6 +64,7 @@ def answer(request, year: int, e_type: int, page_id: int):
 
 def judge(request, year: int, e_type: int):
     results = list(request.session["result"][str(year)][str(e_type)].values())
+    request.session["result"] = {}  # リセット
 
     num = len(results)
     corrects_num = filter(lambda x: x, results)
